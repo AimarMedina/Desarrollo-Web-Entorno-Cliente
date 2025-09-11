@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*if (login == "Empleado") {
+        message = "Hola ";
+      } else if (login == "Director") {
+        message = "Felicidades ";
+      } else if (login == "") {
+        message = "Sin sesión ";
+      } else {
+        message = "Usuario desconocido";
+      }*/
+      var login = prompt(
+        "Por favor, ingresa tu rol (Empleado, Director) o deja vacío:"
+      );
+      var message;
+      switch (login) {
+        case "Empleado":
+          message = "Hola ";
+          break;
+        case "Director":
+          message = "Felicidades ";
+          break;
+        case "":
+          message = "Sin sesión ";
+          break;
+        default:
+          message = "Usuario desconocido";
+      }
+      alert(message);
+    </script>
+  </body>
+</html>

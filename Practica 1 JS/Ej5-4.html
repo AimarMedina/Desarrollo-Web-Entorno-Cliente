@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nota = prompt("Por favor, ingresa una nota entre 0 y 10:");
+        nota = parseFloat(nota);
+        if (nota >= 0 && nota <= 10) {
+            if (nota < 3) {
+                alert("Muy deficiente");
+            } else if (nota < 5) {
+                alert("Deficiente");
+            } else if (nota < 6) {
+                alert("Suficiente");
+            } else if (nota < 7) {
+                alert("Bien");
+            } else if (nota < 9) {
+                alert("Notable");
+            } else {
+                alert("Sobresaliente");
+            }
+        } else {
+            alert("La nota ingresada no es válida. Por favor, ingresa un número entre 0 y 10.");
+        }
+    </script>
+</body>
+</html>
