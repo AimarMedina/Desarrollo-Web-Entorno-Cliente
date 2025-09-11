@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var textoUnido = "";
+        do {
+            let texto = prompt("Por favor, ingresa un texto:");
+            if (textoUnido === "") {
+                textoUnido = texto;
+            } else {
+                textoUnido = textoUnido + "-" + texto;
+            }
+            var continuar = confirm("¿Deseas ingresar otro texto?");
+        } while (continuar);
+        alert("Texto unido: " + textoUnido);
+    </script>
+</body>
+</html>
