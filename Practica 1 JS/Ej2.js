@@ -9,4 +9,3 @@ console.log(texto1.length)
 var texto2 = texto1 + " buenos días";
 console.log(texto2)
 console.log(texto2.substring(3,6))
-
