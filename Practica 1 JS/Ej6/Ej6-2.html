@@ -7,7 +7,17 @@
 </head>
 <body>
     <script>
-        
+        var suma = 0;
+        do {
+            let numero = parseInt(prompt("Por favor, ingresa un numero:"));
+            if (isNaN(numero)) {
+                suma += 0;
+            } else {
+                suma += numero;
+            }
+            var continuar = confirm("¿Deseas ingresar otro numero?");
+        } while (continuar);
+        alert("La suma total es: " + suma);
     </script>
 </body>
 </html>
