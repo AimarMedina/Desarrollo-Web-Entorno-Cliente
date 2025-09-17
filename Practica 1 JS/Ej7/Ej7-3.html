@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+        var diasMeses = [31,28,30,31,30,31,30,31,30,31,30,31]
+        var num = prompt("Dime un numero entre el 1 y el 12: ")
+
+        if (num<1 || num>12) {
+            alert("Error. El numero introducido no esta entre el 1 y el 12")
+        }
+        else{
+            alert("El mes elejido es " + meses[num-1] + " y tiene " + diasMeses[num-1] + " días.")
+        }
+    </script>
+</body>
+</html>

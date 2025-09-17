@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const letrasDNI = [
+        "T",
+        "R",
+        "W",
+        "A",
+        "G",
+        "M",
+        "Y",
+        "F",
+        "P",
+        "D",
+        "X",
+        "B",
+        "N",
+        "J",
+        "Z",
+        "S",
+        "Q",
+        "V",
+        "H",
+        "L",
+        "C",
+        "K",
+        "E",
+      ];
+
+      var dniUsuario = prompt("Introduce tu dni: ");
+
+      if (dniUsuario.length !== 9) {
+        alert("Error. Tu dni no tiene la longitud correcta");
+      } else if (isNaN(parseInt(dniUsuario.slice(0, 8)))) {
+        alert("Error. Tu dni no tiene 8 nuemeros");
+      } else {
+        var resto = parseInt(dniUsuario.slice(0, 8)) % 23;
+        if (dniUsuario.charAt(8).toUpperCase() != letrasDNI[resto]) {
+          alert("Error. Tu dni no tiene la letra correcta");
+        } else {
+          alert("DNI correcto. ¡Bienvenido!");
+        }
+      }
+    </script>
+  </body>
+</html>
