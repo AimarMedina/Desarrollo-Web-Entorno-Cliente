@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var cadena = prompt("Escribe una cadena de caracteres: ");
+      const vocales = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+
+      var vocalesCadenaCantidad = 0;
+      for (let index = 0; index < cadena.length; index++) {
+        if (vocales.includes(cadena[index])) {
+          vocalesCadenaCantidad++;
+        }
+      }
+
+      var porcentaje = (vocalesCadenaCantidad / cadena.length) * 100;
+      alert(
+        "El porcentaje de vocales en tu cadena es del: " + porcentaje + "%"
+      );
+    </script>
+  </body>
+</html>

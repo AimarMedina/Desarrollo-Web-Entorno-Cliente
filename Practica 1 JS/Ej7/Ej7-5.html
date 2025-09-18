@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      var numeros = [1, 12, 59, 140, 6];
+      var valoresUsuario = [];
+      do {
+        let valor = prompt("Por favor, ingresa un valor:");
+        valoresUsuario.push(valor);
+        var continuar = confirm("¿Deseas ingresar otro valor?");
+      } while (continuar);
+      var continuar = true;
+
+      do {
+        let opcion = prompt(
+          "Por favor, ingresa una opción:\n" +
+            "a) Mostrar los números pares del primer array.\n" +
+            "b) Buscar un valor tecleado por el usuario en el segundo array y mostrar todas sus posiciones.\n" +
+            "c) Mostrar todos los números mayores de 10 del primer array.\n" +
+            "d) Crear un string a partir de todos los datos del primer array.\n" +
+            "e) Borrar el primer elemento, el último y un elemento intermedio del segundo array.\n" +
+            "f) Unir los dos arrays formando uno solo y mostrar su contenido.\n" +
+            "g) Crear un nuevo array con todos los números impares del primer array.\n" +
+            "h) Sumar 2 a cada uno de los elementos del segundo array.\n" +
+            "i) Duplicar los dos primeros elementos del primer array a partir de la posición cuatro.\n" +
+            "j) Guardar un 6 en cada una de las posiciones del segundo array.\n" +
+            "k) Mostrar el contenido de un array empezando por la última posición hasta la primera.\n" +
+            "l) Ordenar de mayor a menor el contenido de un array.\n" +
+            "m) Salir."
+        );
+
+        switch (opcion) {
+          case "a":
+            numerosPares = [];
+            numeros.forEach((elemento) => {
+              if (elemento % 2 == 0) {
+                numerosPares.push(elemento);
+              }
+            });
+
+            alert("Los nuemeros pares del primer array son: " + numerosPares);
+            break;
+          case "b":
+            valorBuscar = prompt("Que valor quieres buscar?: ");
+
+            let posiciones = [];
+            for (let i = 0; i < valoresUsuario.length; i++) {
+              if (valoresUsuario[i] == valorBuscar) {
+                posiciones.push(i);
+              }
+            }
+            if (valoresUsuario.includes(valorBuscar)) {
+              alert(
+                "El valor que desea buscar esta en la posicion: " +
+                  posiciones +
+                  1
+              );
+            }
+            break;
+          case "c":
+            var numerosMayores10 = [];
+            numeros.forEach((element) => {
+              if (element > 10) {
+                numerosMayores10.push(element);
+              }
+            });
+            alert(
+              "Los numeros mayores a 10 del primer array son: " +
+                numerosMayores10
+            );
+            break;
+          case "d":
+            var stringArray = "";
+            numeros.forEach((element) => {
+              stringArray += element;
+            });
+            alert(
+              "Este es el string creado a partir del primer array: " +
+                stringArray
+            );
+            break;
+          case "e":
+            var arrayConEliminaciones = valoresUsuario;
+
+            arrayConEliminaciones.pop();
+            arrayConEliminaciones.unshift;
+            if (arrayConEliminaciones.length > 3) {
+              arrayConEliminaciones.splice(floor(valoresUsuario.length / 2), 0);
+            }
+            alert(
+              "Array original: " +
+                valoresUsuario +
+                "\n Array modificado: " +
+                arrayConEliminaciones
+            );
+            break;
+          case "f":
+            var arraysJuntos = [];
+            arraysJuntos.push(numeros);
+            arraysJuntos.push(valoresUsuario);
+            alert(
+              "Nuevo array con los datos de los dos arrays: " + arraysJuntos
+            );
+            break;
+          case "g":
+            numerosImpares = [];
+            numeros.forEach((elemento) => {
+              if (elemento % 2 != 0) {
+                numerosImpares.push(elemento);
+              }
+            });
+
+            alert("Los nuemeros pares del primer array son: " + numerosImpares);
+            break;
+          case "h":
+            var arrayCon2enCadaValor = [];
+            valoresUsuario.forEach((element) => {
+              arrayCon2enCadaValor.push(element + 2);
+            });
+            alert("Array con 2 en cada valor: " + arrayCon2enCadaValor);
+            break;
+          case "i":
+            alert(
+              "El resultado del primer numero es: " +
+                numeros[0] * numeros[4] +
+                " y el resultado del segundo numero es: " +
+                numeros[1] * numeros[4]
+            );
+            break;
+          case "j":
+            var arrayCon6enCadaValor = [];
+            valoresUsuario.forEach((element) => {
+              arrayCon2enCadaValor.push(element + 6);
+            });
+            alert("Array con 6 en cada valor: " + arrayCon6enCadaValor);
+            break;
+          case "k":
+            var arrayInvertido = [];
+            for (let index = valoresUsuario.length; index == 0; index--) {
+              arrayInvertido.push(valoresUsuario[index]);
+            }
+            break;
+          case "l":
+            var arraySeleccionado = parseInt(prompt("Elije el array que quieres modificar (1|2): "))
+            break;
+          case "m":
+            continuar = false;
+            break;
+        }
+
+        continuar = confirm("¿Deseas ingresar otro valor?");
+      } while (continuar);
+    </script>
+  </body>
+</html>
