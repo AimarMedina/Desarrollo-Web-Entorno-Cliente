@@ -1,0 +1,149 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fondo y título */
+body {
+    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    color: #333;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #222;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Contenedor principal */
+table {
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* Subtabla de los días */
+.dias {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+/* Encabezado del mes */
+.dias th[colspan="7"] {
+    background: #4a90e2;
+    color: white;
+    font-size: 18px;
+    padding: 15px;
+    letter-spacing: 1px;
+}
+
+/* Encabezados de días */
+.dias th {
+    background: #f3f4f6;
+    padding: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Celdas */
+.dias td {
+    padding: 8px;
+    border: 1px solid #eee;
+}
+
+/* Botones de días */
+.dias td button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background: #e4e6eb;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+/* Hover */
+.dias td button:hover {
+    background: #4a90e2;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Botón activo / seleccionado */
+.dias td button:active {
+    background: #357ab8;
+    color: white;
+    transform: scale(0.95);
+}
+
+.dias td button.seleccionado {
+    background: #357ab8;
+    color: white;
+    transform: scale(0.95);
+}
+
+/* Panel lateral del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+    height: 100%;
+}
+
+form input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+form input[type="text"]:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74,144,226,0.4);
+}
+
+/* Botones del formulario */
+form button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+}
+
+form .inicializar {
+    background-color: #ff6b6b;
+}
+
+form .inicializar:hover {
+    background-color: #e63946;
+}
+
+form .visualizar {
+    background-color: #38b000;
+}
+
+form .visualizar:hover {
+    background-color: #2d6a4f;
+}
+
+
