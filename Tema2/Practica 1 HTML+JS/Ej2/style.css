@@ -15,11 +15,11 @@ body {
     align-items: center;
     padding: 40px;
     color: #333;
+    gap: 20px;
 }
 
 h1 {
     font-size: 28px;
-    margin-bottom: 30px;
     color: #222;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
@@ -95,8 +95,7 @@ table {
     transform: scale(0.95);
 }
 
-/* Panel lateral del formulario */
-form {
+.buttons {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -105,7 +104,7 @@ form {
     height: 100%;
 }
 
-form input[type="text"] {
+.buttons input[type="text"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -114,13 +113,12 @@ form input[type="text"] {
     transition: 0.2s;
 }
 
-form input[type="text"]:focus {
+.buttons input[type="text"]:focus {
     border-color: #4a90e2;
     box-shadow: 0 0 5px rgba(74,144,226,0.4);
 }
 
-/* Botones del formulario */
-form button {
+.buttons button {
     padding: 10px 15px;
     border: none;
     border-radius: 6px;
@@ -130,20 +128,58 @@ form button {
     color: white;
 }
 
-form .inicializar {
+.buttons .inicializar {
     background-color: #ff6b6b;
 }
 
-form .inicializar:hover {
+.buttons .inicializar:hover {
     background-color: #e63946;
 }
 
-form .visualizar {
+.buttons .visualizar {
     background-color: #38b000;
 }
 
-form .visualizar:hover {
+.buttons .visualizar:hover {
     background-color: #2d6a4f;
 }
 
 
+.visualizarAnotaciones {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: #f3f4f6; /* armoniza con tus th de días */
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Cada día con sus tareas */
+.visualizarAnotaciones div {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #e4e6eb; /* similar al botón de los días */
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    transition: 0.2s;
+}
+
+/* Día destacado en negrita */
+.visualizarAnotaciones div strong {
+    color: #4a90e2;
+    font-weight: bold;
+}
+
+/* Hover sobre cada día para resaltar */
+.visualizarAnotaciones div:hover {
+    background-color: #d0d3d8;
+    transform: scale(1.02);
+}
+
+.visualizarAnotaciones.oculto{
+    display: none;
+}

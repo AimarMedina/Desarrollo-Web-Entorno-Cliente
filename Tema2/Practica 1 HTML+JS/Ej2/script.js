@@ -1,7 +1,9 @@
 let tabla = document.getElementsByClassName("dias")[0]
-let inicializar = document.querySelector(".inicializar")
 let texto = document.querySelector('input[type="text"]')
 
+//botones
+let inicializar = document.querySelector(".inicializar")
+let visualizar = document.querySelector(".visualizar")
 
 let cantidadBotones = 1;
 crearBotones()
@@ -23,22 +25,36 @@ function annadirDia(event){
 
         // actualizar la variable global con el número seleccionado
         diaSeleccionado = event.target.textContent;
-        console.log("Día seleccionado:", diaSeleccionado);
     }
 }
 
 inicializar.addEventListener('click', guardarDatos)
+visualizar.addEventListener('click',mostrarTareas)
+
+let diaTarea = []
 
 function guardarDatos(){
     if(texto.value!=="" && diaSeleccionado!==0){
-        console.log("hola")
-    }
-    else{
-        console.log("debes de seleccionar un dia y escribir un texto")
+        if(diaTarea.filter(valor => valor.dia === diaSeleccionado && valor.tarea === texto.value) < 1){
+            diaTarea.push(
+                {
+                    dia: diaSeleccionado,
+                    tarea: texto.value
+                }
+            )
+            eliminarEstiloDias()
+            texto.value = "";
+            alert("Tarea insertada con exito.")
+        }else{
+            alert("Esta tarea ya existe para este día.")
+        }
     }
 }
 
-
+function eliminarEstiloDias(){
+    let boton = document.querySelector(".seleccionado")
+    boton.classList.remove("seleccionado")
+}
 
 function crearBotones(){
     for(let i = 0; i<5;i++){
@@ -57,6 +73,35 @@ function crearBotones(){
 
             cantidadBotones++
         }
+    }
+}
+
+function mostrarTareas(){
+
+    const container = document.querySelector(".visualizarAnotaciones");
+    container.innerHTML = "";
+    container.classList.remove('oculto')
+
+    if(diaTarea.length === 0){
+        container.textContent = "No hay tareas.";
+        return;
+    }
+
+
+    // agrupar tareas por día
+    const tareasPorDia = {};
+    diaTarea.forEach(item => {
+        if(!tareasPorDia[item.dia]){
+            tareasPorDia[item.dia] = [];
+        }
+        tareasPorDia[item.dia].push(item.tarea);
+    });
+
+    // crear la lista en HTML
+    for(const dia in tareasPorDia){
+        const diaDiv = document.createElement("div");
+        diaDiv.innerHTML = `<strong>Día ${dia}:</strong> ${tareasPorDia[dia].join(", ")}`;
+        container.appendChild(diaDiv);
     }
 }
 
