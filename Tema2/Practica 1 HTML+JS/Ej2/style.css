@@ -60,7 +60,8 @@ table {
 /* Celdas */
 .dias td {
     padding: 8px;
-    border: 1px solid #eee;
+    text-align: center;
+    border: 1px #d0d3d8 solid
 }
 
 /* Botones de días */
@@ -100,7 +101,6 @@ table {
     flex-direction: column;
     gap: 15px;
     padding: 20px;
-    border-left: 1px solid #ddd;
     height: 100%;
 }
 

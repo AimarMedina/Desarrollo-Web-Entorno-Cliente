@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+</head>
+<body>
+<form id="formulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre">
+
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" id="apellidos" name="apellidos">
+
+    <label for="correo">Correo electrónico:</label>
+    <input type="email" id="correo" name="correo" placeholder="ejemplo@mail.com">
+
+    <label for="poblacion">Población:</label>
+    <input type="text" id="poblacion" name="poblacion">
+
+    <label for="provincia">Provincia:</label>
+    <input type="text" id="provincia" name="provincia">
+
+    <!-- Radios en una fila -->
+    <label>Edad:</label>
+    <div class="radio-group">
+        <label><input type="radio" name="edad" value="0-20">0-20</label>
+        <label><input type="radio" name="edad" value="20-40">20-40</label>
+        <label><input type="radio" name="edad" value="40-60">40-60</label>
+        <label><input type="radio" name="edad" value="60-100">60-100</label>
+    </div>
+
+    <!-- Checkboxes en dos columnas -->
+    <label>¿Cómo nos conociste?</label>
+    <div class="checkbox-group">
+        <label><input type="checkbox" name="conocido" value="amigo">Amigo</label>
+        <label><input type="checkbox" name="conocido" value="buscador">Buscador</label>
+        <label><input type="checkbox" name="conocido" value="navegando">Navegando</label>
+        <label><input type="checkbox" name="conocido" value="otros">Otros</label>
+    </div>
+
+    <button class="Enviar">Enviar</button>
+    <input type="reset" value="Borrar">
+</form>
+
+</body>
+</html>
+
+    <script src="script.js"></script>
+</body>
+</html>
