@@ -58,7 +58,35 @@ function reinicarLista(){
     })
 }
 
-function vaciarlista(){
+async function vaciarlista(){
+    // try{
+    //     //ENVIAR DATOS AL BACKEND
+    //     const response = await fetch("http://localhost:3000/productos/vaciarlista",
+    //         {
+    //             method: "POST",
+    //             body: JSON.stringify('hola'),
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         }
+    //     )
+    //     if(!response.ok){
+    //         throw new Error("No se pudo vaciar la lista")
+    //     }
+    //     const data2 = await response.json()
+    //     console.log(data2);
+
+    //     //OBETNER DATOS DEL BACKEND
+    //     const response2 = await fetch("http://localhost:3000/productos/vaciarlista")
+    //     if(!response2.ok){
+    //         throw new Error("No se pudo vaciar la lista")
+    //     }
+    //     const data = await response.json()
+    //     console.log(data);
+    // }catch(e){
+    //     alert("No hay productos")
+    // }
+
     if(localStorage.getItem("productos")){
         localStorage.removeItem("productos")
     }
