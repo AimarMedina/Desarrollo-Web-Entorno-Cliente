@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <h1>Contador: {{ contador }}</h1>
+    <h3>Contador: {{ contador }}</h3>
     <button @click="contador++">Incrementar</button>
     <button @click="contador--">Dencrementar</button>
     <button @click="contador=0">Resetear</button>
