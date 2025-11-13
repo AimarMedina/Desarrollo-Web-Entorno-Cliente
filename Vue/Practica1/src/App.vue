@@ -6,34 +6,13 @@
   import ej5 from './components/Ej5.vue'
   import ej6 from './components/Ej6.vue'
   import ej7 from './components/Ej7.vue'
+  import ej1_ChatGPT from './components/Ej1-ChatGPT.vue'
+  import ej2_ChatGPT from './components/Ej2-ChatGPT.vue'
+  import ej3_ChatGPT from './components/Ej3-ChatGPT.vue'
 
 </script>
 
 <template>
-  <!-- EJERCICIO 1 -->
-  <ej1></ej1>
-  <br><br><br>
-
-  <!-- EJERCICIO 2 -->
-  <ej2></ej2>
-  <br>
-
-  <!-- EJERCICIO 3 -->
-  <ej3></ej3>
-  <br>
-
-  <!-- EJERCICIO 4 -->
-  <ej4></ej4>
-  <br><br><br>
-
-  <!-- EJERCICIO 5 -->
-  <ej5></ej5>
-  <br>
-
-  <!-- EJERCICIO 6 -->
-  <ej6></ej6>
-
-  <!-- EJERCICIO 7 -->
-  <ej7></ej7>
+  <ej3_ChatGPT></ej3_ChatGPT>
 </template>
 <style scoped></style>
