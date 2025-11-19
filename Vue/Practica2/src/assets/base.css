@@ -1,0 +1,95 @@
+/* ===== Reset + body centrado ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #1e1e1e; /* oscuro pero no negro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  color: #f0f0f0;
+}
+
+/* ===== Contenedor centrado estilo tarjeta ===== */
+.container {
+  background-color: #2a2a2a;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* ===== Botones ===== */
+button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+  transition: 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+/* Success */
+.btn-success {
+  background-color: #28a745;
+}
+.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Warning */
+.btn-warning {
+  background-color: #f0ad4e;
+}
+.btn-warning:hover {
+  background-color: #d9963b;
+}
+
+/* Danger */
+.btn-danger {
+  background-color: #dc3545;
+}
+.btn-danger:hover {
+  background-color: #b02a37;
+}
+
+/* ===== Inputs y labels ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+input, select, textarea {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  font-size: 1rem;
+  transition: 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #28a745;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+}
+
+/* ===== Utilidades ===== */
+.text-center {
+  text-align: center;
+}
