@@ -21,24 +21,28 @@ function eliminar(indice) {
 <template>
     <h3>Mis tareas ({{ tareas.length }})</h3>
     <ul>
-        <li v-for="t,i in tareas">{{ t }} <span class="eliminar" @click="eliminar(i)">X</span></li>
+        <li v-for="t,i in tareas">{{ t }} <span class="eliminar" @click="eliminar(i)">🗑️</span></li>
     </ul>
-    <button @click="añadirTarea">Añadir tarea</button>
+    <div class="buttons">
+        <button @click="añadirTarea">Añadir tarea</button>
+        <button @click="tareas = []">Eliminar tareas</button>
+    </div>
 </template>
 
 <style scoped>
-* {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-}
 
 .eliminar {
     border: none;
-    padding: 2px 6px;
-    font-size: 10px;
-    border-radius: 10px;
-    background-color: red;
-    color: white;
     cursor: pointer;
 }
+ul{
+    list-style-type: none;
+}
+
+.buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
 </style>

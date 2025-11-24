@@ -1,6 +1,6 @@
 <script setup>
-    import { ref } from "vue";
-    let productos = ref(
+    import { computed, reactive, ref } from "vue";
+    let productos = reactive(
         [
             {
                 'nombre': 'Libro',
@@ -20,10 +20,9 @@
             },
         ]
     )
-    let total = ref(0)
-    productos.value.forEach(producto => {
-        total.value += producto.precio
-    });
+    let total = computed(() => {
+        return productos.reduce((suma, producto) => suma + producto.precio,0)
+    })
 </script>
 
 <template>
@@ -31,5 +30,13 @@
     <ul>
         <li v-for="t in productos">{{t.nombre}} - ${{ t.precio }}</li>
     </ul>
-    <p>Total: ${{ total }}</p>
+    <p><strong>Total</strong>: ${{ total }}</p>
 </template>
+
+<style scoped>
+
+ul{
+    text-align: left;
+}
+
+</style>

@@ -13,6 +13,5 @@
 </script>
 
 <template>
-  <ej3_ChatGPT></ej3_ChatGPT>
+  <ej7></ej7>
 </template>
-<style scoped></style>

@@ -1,7 +1,7 @@
 <script setup>
 
-    import {ref} from 'vue'
-    let persona = ref(
+    import {reactive, ref} from 'vue'
+    let persona = reactive(
         {
             'nombre': 'Ana',
             'edad': 25,
@@ -10,7 +10,7 @@
     )
 
     function cumplir(){
-        persona.value.edad++
+        persona.edad++
     }
 </script>
 
@@ -19,3 +19,14 @@
     <p>{{ persona['email'] }}</p>
     <button @click="cumplir">Cumplir años</button>
 </template>
+
+<style scoped>
+    button{
+        margin-top: 10px;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 10px;
+        border: none;
+    }
+</style>
