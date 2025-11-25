@@ -7,10 +7,11 @@
   import ej4 from  './components/ej4.vue'
   import ej5 from  './components/ej5.vue'
   import ej6 from  './components/ej6.vue'
+  import ej7 from  './components/ej7.vue'
 </script>
 
 <template>
-  <ej6></ej6>
+  <ej7></ej7>
 </template>
 
 <style scoped></style>
