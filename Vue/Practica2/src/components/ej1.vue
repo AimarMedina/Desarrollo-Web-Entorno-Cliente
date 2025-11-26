@@ -1,9 +1,27 @@
 <script setup>
-    import { ref } from 'vue'
-    let nombre = ref('')
-    let apellido = ref('')
+
+import { computed, ref } from 'vue';
+
+let nombre = ref('')
+let apellido = ref('')
+
+let nombreCompleto = computed(()=>{
+    return nombre.value + ' ' + apellido.value
+})
 </script>
 
 <template>
-    <h3>Tu nombre completo es: {{ nombre }} {{ apellido }}</h3>
+  <div class="container">
+    <form action="">
+        <h3>Tu nombre completo es: {{ nombreCompleto }}</h3>
+        <span>Nombre: <input type="text" v-model="nombre"></span>
+        <span> Apellido: <input type="text" v-model="apellido"></span>
+
+    </form>
+  </div>
 </template>
+
+
+<style scoped>
+
+</style>
