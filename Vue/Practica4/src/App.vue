@@ -25,12 +25,12 @@ watch(lista, (nuevaLista) => {
   localStorage.setItem('productos', JSON.stringify(nuevaLista));
 });
 
-function agregarProductoCarrito(event){
+function agregarProductoCarrito(event) {
 
-  const indice = verificarProductoExistente(event,lista)
-  if(indice !== -1){
+  const indice = verificarProductoExistente(event, lista)
+  if (indice !== -1) {
     lista[indice].cantidad = lista[indice].cantidad + event.cantidad
-  }else{
+  } else {
     lista.push(event)
   }
 
@@ -41,15 +41,15 @@ function verificarProductoExistente(producto, lista) {
   return indiceProducto;
 }
 
-function eliminarProductoCarrito(event){
-  const indice = verificarProductoExistente(event,lista)
-  try{
-    if(indice === -1){
+function eliminarProductoCarrito(event) {
+  const indice = verificarProductoExistente(event, lista)
+  try {
+    if (indice === -1) {
       throw new Error("El producto introducido no existe");
     }
 
-    lista.splice(indice,1)
-  }catch(e){
+    lista.splice(indice, 1)
+  } catch (e) {
     alert(e)
   }
 }
@@ -64,18 +64,18 @@ function eliminarProductoCarrito(event){
   <button @click="cAgregar">Agregrar Producto</button>
   <button v-if="!listaVacía" @click="cEliminar">Eliminar Producto</button>
 
-  <component :is="listaVacía ? opciones[porDefecto] : opciones[seleccion]" @agregar="agregarProductoCarrito" @eliminar="eliminarProductoCarrito"></component>
+  <component :is="listaVacía ? opciones[porDefecto] : opciones[seleccion]" @agregar="agregarProductoCarrito"
+    @eliminar="eliminarProductoCarrito"></component>
   <ListaCompra>
     <template #lista>
-      <ul v-if="lista.length>0">
-          <li v-for="(producto,index) in lista" :key="index"> {{ producto.nombre }} - {{ producto.cantidad }} uds </li>
+      <ul v-if="lista.length > 0">
+        <li v-for="(producto, index) in lista" :key="index"> {{ producto.nombre }} - {{ producto.cantidad }} uds </li>
       </ul>
       <p v-else>
-          No hay productos en la lista
+        No hay productos en la lista
       </p>
 
     </template>
   </ListaCompra>
 </template>
 
-<style scoped></style>

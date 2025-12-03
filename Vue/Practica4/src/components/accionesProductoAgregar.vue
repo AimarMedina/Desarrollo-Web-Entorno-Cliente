@@ -14,6 +14,9 @@
             if(nombre.value.length<1){
                 throw new Error("No has escrito ningún producto");
             }
+            if(parseInt(nombre.value)){
+                throw new Error("El producto no puede ser un numero");
+            }
             if(cantidad.value<1){
                 throw new Error("No has indicado una cantidad valida");
             }
@@ -23,10 +26,11 @@
                 cantidad: cantidad.value
             }
             nombre.value = ""
-            cantidad.value = 1
             emit('agregar',producto)
         }catch(e){
             alert(e)
+            nombre.value = ""
+
         }
     }
 
