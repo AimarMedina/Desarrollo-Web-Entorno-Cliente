@@ -10,7 +10,6 @@
 
     function agregar(){
         try{
-
             if(nombre.value.length<1){
                 throw new Error("No has escrito ningún producto");
             }
@@ -29,8 +28,6 @@
             emit('agregar',producto)
         }catch(e){
             alert(e)
-            nombre.value = ""
-
         }
     }
 

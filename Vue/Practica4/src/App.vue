@@ -1,8 +1,8 @@
 <script setup>
 import { computed, reactive, ref, watch } from 'vue';
-import AgregarProducto from './components/AgregarProducto.vue';
-import EliminarProducto from './components/EliminarProducto.vue';
-import ListaCompra from './components/ListaCompra.vue';
+import AgregarProducto from './components/agregarProducto.vue';
+import EliminarProducto from './components/eliminarProducto.vue';
+import ListaCompra from './components/listaCompra.vue';
 
 const opciones = {
   AgregarProducto: AgregarProducto,
@@ -74,7 +74,6 @@ function eliminarProductoCarrito(event) {
       <p v-else>
         No hay productos en la lista
       </p>
-
     </template>
   </ListaCompra>
 </template>

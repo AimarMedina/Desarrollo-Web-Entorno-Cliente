@@ -1,14 +1,10 @@
 <script setup>
-    import { reactive } from 'vue'
+    import { inject, reactive } from 'vue'
     import botonAgregrar from './botonAgregrar.vue'
     import producto from './producto.vue'
 
-    let productos = reactive([
-        { id: 1, nombre: 'Portátil', precio: 800 },
-        { id: 2, nombre: 'Ratón', precio: 20 },
-        { id: 3, nombre: 'Teclado', precio: 30 },
-        {id: 4, nombre: 'Monitor', precio: 150 }
-    ])
+    const productos = inject('productos')
+
     let emit = defineEmits(['añadir'])
     let añadirCarrito = (producto) => {
         emit('añadir', {...producto})

@@ -8,7 +8,6 @@ const props = defineProps({
     producto: Object
 })
 
-// Cada vez que llega un nuevo producto, lo añadimos al carrito:
 watch(() => props.producto, (nuevoProducto) => {
     if (nuevoProducto) {
         if (!carrito.value.find(p => p.id === nuevoProducto.id)){
@@ -35,7 +34,7 @@ let eliminarProducto = (id) => {
     <ul>
         <li v-for="p in carrito" :key="p.id">
             <Producto :producto="p" />
-            <input type="text" v-model="p.cantidad">
+            <input type="number" v-model="p.cantidad" min="0">
             <button @click="eliminarProducto(p.id)">Eliminar</button>
         </li>
     </ul>

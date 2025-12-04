@@ -1,19 +1,16 @@
 <script setup>
-import { ref } from 'vue';
+  import { ref } from 'vue';
 
-
-let contador = ref(0)
-
-
-</script>
+  const campo1 = ref('');
+  const campo2 = ref('');
+  </script>
 
 <template>
-    <p>El contador es 
-        <span v-if="contador == 0">igual a cero</span>
-        <span v-else-if="contador>0">positivo</span>
-        <span v-else>negativo</span>
-    </p>
-    
-    <button @click="contador++">Incrementar</button>
-    <button @click="contador--">Decrementar</button>
-</template>
+    <div>
+      <input v-model="campo1" placeholder="Campo 1">
+      <input v-model="campo2" placeholder="Campo 2">
+
+      <p v-if="campo1.length > 0 && campo2.length > 0">Ambos campos están llenos.</p>
+      <p v-else>Completa ambos campos.</p>
+    </div>
+  </template>
