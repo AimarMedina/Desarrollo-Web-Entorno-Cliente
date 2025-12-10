@@ -6,7 +6,7 @@
   let usuarioRegistrado = ref(obtenerUsuarioRegistrado())
 
   let guardarSesion = (usuario) => {
-    localStorage.setItem('usuario', JSON.stringify({id: usuario.id, name: usuario.name, cuentas: usuario.cuentas}))
+    localStorage.setItem('usuario', JSON.stringify(usuario.id))
     usuarioRegistrado.value = {id: usuario.id, name: usuario.name, cuentas: usuario.cuentas}
   }
 
@@ -18,9 +18,11 @@
   function obtenerUsuarioRegistrado() {
     return JSON.parse(localStorage.getItem('usuario'))
   }
-
-  let movimientosUsuario = useUsersStore().movimientosUsuarios.find(movimiento => movimiento.idUsuario == usuarioRegistrado.value.id)
-  provide('movimientos',movimientosUsuario.movimientos);
+  
+  if(usuarioRegistrado.value){
+    let movimientosUsuario = useUsersStore().movimientosUsuarios.find(movimiento => movimiento.idUsuario == usuarioRegistrado.value.id)
+    provide('movimientos',movimientosUsuario.movimientos);
+  }
 
 </script>
 
