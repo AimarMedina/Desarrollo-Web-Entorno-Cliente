@@ -6,9 +6,16 @@
   let usuarioRegistrado = ref(obtenerUsuarioRegistrado())
 
   let guardarSesion = (usuario) => {
-    localStorage.setItem('usuario', JSON.stringify(usuario.id))
-    usuarioRegistrado.value = {id: usuario.id, name: usuario.name, cuentas: usuario.cuentas}
+    const usuarioGuardar = {
+      id: usuario.id,
+      name: usuario.name,
+      cuentas: usuario.cuentas
+    }
+
+    localStorage.setItem('usuario', JSON.stringify(usuarioGuardar))
+    usuarioRegistrado.value = usuarioGuardar
   }
+
 
   let cerrarSesion = () => {
     localStorage.removeItem('usuario')
@@ -18,11 +25,16 @@
   function obtenerUsuarioRegistrado() {
     return JSON.parse(localStorage.getItem('usuario'))
   }
-  
-  if(usuarioRegistrado.value){
-    let movimientosUsuario = useUsersStore().movimientosUsuarios.find(movimiento => movimiento.idUsuario == usuarioRegistrado.value.id)
-    provide('movimientos',movimientosUsuario.movimientos);
-  }
+
+if(usuarioRegistrado.value){
+  const movimientosUsuario = useUsersStore().movimientosUsuarios.find(
+    movimiento => movimiento.idUsuario == usuarioRegistrado.value.id
+  )
+
+  provide('movimientos', movimientosUsuario?.movimientos || []);
+
+}
+
 
 </script>
 
