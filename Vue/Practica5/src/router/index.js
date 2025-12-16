@@ -17,13 +17,13 @@ const routes = [
     path: "/consultas",
     name: "consultas",
     component: ConsultasView,
-    // meta: { requiresAuth: true }
+    meta: { requiresAuth: true }
   },
   {
     path: "/transacciones",
     name: "transacciones",
     component: TransaccionesView,
-    // meta: { requiresAuth: true }
+     meta: { requiresAuth: true }
   },
 ];
 
@@ -32,12 +32,12 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.meta.requiresAuth && !isLoggedIn()) {
-//     next({ path: "/" }); // redirige al home si no está logueado
-//   } else {
-//     next();
-//   }
-// });
+ router.beforeEach((to, from, next) => {
+   if (to.meta.requiresAuth && !isLoggedIn()) {
+     next({ path: "/" });
+   } else {
+     next();
+   }
+ });
 
 export default router;

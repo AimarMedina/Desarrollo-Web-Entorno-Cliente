@@ -1,30 +1,48 @@
 <script setup>
-  import { RouterLink,RouterView } from 'vue-router';
-  import { ref,provide } from 'vue';
-  import { useUsersStore } from '@/stores/users';
+  import { RouterLink, RouterView } from 'vue-router'
+  import { ref, provide } from 'vue'
+  import { useUsersStore } from '@/stores/users'
 
-  let usuarioRegistrado = ref(obtenerUsuarioRegistrado())
+  const usuarios = useUsersStore()
 
-  let guardarSesion = (usuario) => {
+  const usuarioRegistrado = ref(null)
+
+  const guardarSesion = (usuario) => {
     localStorage.setItem('usuario', JSON.stringify(usuario.id))
-    usuarioRegistrado.value = {id: usuario.id, name: usuario.name, cuentas: usuario.cuentas}
+
+    usuarioRegistrado.value = { id: usuario.id, name: usuario.name, cuentas: usuario.cuentas }
+
+    const movimientosUsuario = usuarios.movimientosUsuarios.find(m => m.idUsuario == usuario.id)
+    provide('movimientos', movimientosUsuario.movimientos)
   }
 
-  let cerrarSesion = () => {
+  const cerrarSesion = () => {
     localStorage.removeItem('usuario')
     usuarioRegistrado.value = null
   }
 
-  function obtenerUsuarioRegistrado() {
-    return JSON.parse(localStorage.getItem('usuario'))
+  function obtenerUsuario() {
+      return JSON.parse(localStorage.getItem('usuario')) ?? []
   }
-  
-  if(usuarioRegistrado.value){
-    let movimientosUsuario = useUsersStore().movimientosUsuarios.find(movimiento => movimiento.idUsuario == usuarioRegistrado.value.id)
-    provide('movimientos',movimientosUsuario.movimientos);
+
+  const idGuardado = obtenerUsuario()
+  if (idGuardado != null) {
+
+    const usuario = usuarios.usuarios?.find(u => u.id == idGuardado)
+    if (usuario) {
+      usuarioRegistrado.value = { id: usuario.id, name: usuario.name, cuentas: usuario.cuentas }
+    }
+
+    const movimientosUsuario = usuarios.movimientosUsuarios?.find(m => m.idUsuario == idGuardado)
+    if (movimientosUsuario?.movimientos) {
+      provide('movimientos', movimientosUsuario.movimientos)
+    } else {
+      provide('movimientos', [])
+    }
   }
 
 </script>
+
 
 <template>
   <header>
