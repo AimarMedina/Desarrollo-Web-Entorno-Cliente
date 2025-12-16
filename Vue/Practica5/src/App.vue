@@ -1,45 +1,92 @@
 <script setup>
-  import { RouterLink, RouterView } from 'vue-router'
-  import { ref, provide } from 'vue'
-  import { useUsersStore } from '@/stores/users'
+import { RouterLink, RouterView } from 'vue-router'
+import { ref, provide, watch, reactive } from 'vue'
+import { useUsersStore } from '@/stores/users'
 
-  const usuarios = useUsersStore()
+const usuarios = useUsersStore()
 
-  const usuarioRegistrado = ref(null)
+const usuarioRegistrado = ref(null)
 
-  const guardarSesion = (usuario) => {
-    localStorage.setItem('usuario', JSON.stringify(usuario.id))
+const guardarSesion = (usuario) => {
+  localStorage.setItem('usuario', JSON.stringify(usuario.id))
 
+  usuarioRegistrado.value = { id: usuario.id, name: usuario.name, cuentas: usuario.cuentas }
+
+  const movimientosUsuario = usuarios.movimientosUsuarios.find(m => m.idUsuario == usuario.id)
+  provide('movimientos', movimientosUsuario.movimientos)
+}
+
+
+
+let cerrarSesion = () => {
+  localStorage.removeItem('usuario')
+  usuarioRegistrado.value = null
+}
+
+function obtenerUsuario() {
+  return JSON.parse(localStorage.getItem('usuario')) ?? []
+}
+
+const idGuardado = obtenerUsuario()
+if (idGuardado != null) {
+
+  const usuario = usuarios.usuarios?.find(u => u.id == idGuardado)
+  if (usuario) {
     usuarioRegistrado.value = { id: usuario.id, name: usuario.name, cuentas: usuario.cuentas }
+  }
 
-    const movimientosUsuario = usuarios.movimientosUsuarios.find(m => m.idUsuario == usuario.id)
+  const movimientosUsuario = usuarios.movimientosUsuarios?.find(m => m.idUsuario == idGuardado)
+  if (movimientosUsuario?.movimientos) {
     provide('movimientos', movimientosUsuario.movimientos)
+  } else {
+    provide('movimientos', [])
+  }
+}
+
+let datostransferencia = ref()
+let transferir = (datos) => {
+  datostransferencia.value = datos
+}
+
+watch(datostransferencia, (datos) => {
+  const movimientos = usuarios.movimientosUsuarios.find(m => m.idUsuario == idGuardado).movimientos
+
+  const hoy = new Date()
+
+  if (datos.cuentaDestino) {
+    movimientos.push(
+      {
+        id: movimientos.length + 1,
+        nCuenta: datos.cuentaOrigen,
+        fechaMovimiento: hoy.getDay() + "/" + hoy.getMonth() + "/" + hoy.getFullYear(),
+        tipo: "Retiro", cantidad: datos.cantidad
+      }
+    )
+    movimientos.push(
+      {
+        id: movimientos.length + 1,
+        nCuenta: datos.cuentaDestino,
+        fechaMovimiento: hoy.getDay() + "/" + hoy.getMonth() + "/" + hoy.getFullYear(),
+        tipo: "Deposito",
+        cantidad: datos.cantidad
+      }
+    )
+  }
+  else{
+    movimientos.push(
+      {
+        id: movimientos.length + 1,
+        nCuenta: datos.cuentaOrigen,
+        fechaMovimiento: hoy.getDay() + "/" + hoy.getMonth() + "/" + hoy.getFullYear(),
+        tipo: "Retiro", cantidad: datos.cantidad
+      }
+    )
   }
 
-  const cerrarSesion = () => {
-    localStorage.removeItem('usuario')
-    usuarioRegistrado.value = null
-  }
+})
 
-  function obtenerUsuario() {
-      return JSON.parse(localStorage.getItem('usuario')) ?? []
-  }
 
-  const idGuardado = obtenerUsuario()
-  if (idGuardado != null) {
 
-    const usuario = usuarios.usuarios?.find(u => u.id == idGuardado)
-    if (usuario) {
-      usuarioRegistrado.value = { id: usuario.id, name: usuario.name, cuentas: usuario.cuentas }
-    }
-
-    const movimientosUsuario = usuarios.movimientosUsuarios?.find(m => m.idUsuario == idGuardado)
-    if (movimientosUsuario?.movimientos) {
-      provide('movimientos', movimientosUsuario.movimientos)
-    } else {
-      provide('movimientos', [])
-    }
-  }
 
 </script>
 
@@ -60,11 +107,11 @@
       </div>
     </nav>
   </header>
-  <RouterView @iniciarSesion="guardarSesion" :usuarioRegistrado="usuarioRegistrado"/>
+  <RouterView @iniciarSesion="guardarSesion" :usuarioRegistrado="usuarioRegistrado" @transferir="transferir" />
 </template>
 
 <style scoped>
-  header {
+header {
   padding: 15px 40px;
   display: flex;
   align-items: center;
@@ -80,7 +127,8 @@
 }
 
 /* Nav */
-nav,.accionesUsuario {
+nav,
+.accionesUsuario {
   display: flex;
   gap: 25px;
 }
@@ -111,5 +159,4 @@ nav a:hover {
     height: 40px;
   }
 }
-
 </style>

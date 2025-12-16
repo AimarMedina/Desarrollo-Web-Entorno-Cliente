@@ -7,20 +7,24 @@
   let passwd = ref('')
   let emit = defineEmits(['iniciarSesion'])
 
+  let errorUsuario = ref(false);
+  let errorPasswd = ref(false);
+
   function validarCampos(){
-    try{
+    errorUsuario.value = false
+    errorPasswd.value = false
       let usuario = users.usuarios.find(usuario => usuario.dni == dni.value) ?? ''
       if(!usuario){
-        throw new Error("Usuario no encontrado");
+        errorUsuario.value = true
+        return
       }
       if(usuario.passwd !== passwd.value){
-        throw new Error("Contraseña incorrecta");
+        errorPasswd.value = true
+        return
       }
 
       emit('iniciarSesion', usuario)
-    }catch(e){
-      alert(e)
-    }
+
   }
 
 </script>
@@ -31,10 +35,12 @@
         <div class="dni">
             <label for="id">Identificador</label>
             <input type="text" id="id" name="dni" placeholder="DNI" v-model="dni">
+            <p v-if="errorUsuario" class="error">Usuario no encontrado</p>
         </div>
         <div class="passwd">
             <label for="passwd">Contraseña</label>
             <input type="password" id="passwd" name="passwd" placeholder="********" v-model="passwd">
+            <p v-if="errorPasswd" class="error">Contraseña incorrecta</p>
         </div>
         <button @click="validarCampos">Iniciar Sesión</button>
     </div>
@@ -135,6 +141,16 @@ button:active {
   .form {
     padding: 20px;
   }
+}
+.error {
+  color: #ff4d4f;        /* rojo intenso para indicar error */
+  background-color: #fff1f0; /* fondo suave para destacar */
+  border: 1px solid #ffa39e; /* borde fino de color similar al texto */
+  padding: 8px 12px;     /* un poco de espacio interno */
+  border-radius: 4px;    /* esquinas redondeadas */
+  font-size: 0.9rem;     /* tamaño de letra más pequeño */
+  margin-top: 8px;       /* separación respecto a otros elementos */
+  display: inline-block; /* que no ocupe todo el ancho */
 }
 
 </style>
