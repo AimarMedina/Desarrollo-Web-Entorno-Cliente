@@ -10,7 +10,7 @@ export const productos = defineStore("productos", () => {
       volumen_ml: 330,
       precio_venta: 2.5,
       cantidad_alcohol: 0,
-      imagen: "../../public/cocacola.png",
+      imagen: "/cocacola.png",
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ export const productos = defineStore("productos", () => {
       volumen_ml: 500,
       precio_venta: 1.8,
       cantidad_alcohol: 0,
-      imagen: "../../public/aguamineral.png",
+      imagen: "/aguamineral.png",
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ export const productos = defineStore("productos", () => {
       volumen_ml: 330,
       precio_venta: 3.0,
       cantidad_alcohol: 5,
-      imagen: "../../public/cervezalager.png",
+      imagen: "/cervezalager.png",
     },
     {
       id: 4,
@@ -40,7 +40,7 @@ export const productos = defineStore("productos", () => {
       volumen_ml: 150,
       precio_venta: 3.5,
       cantidad_alcohol: 13,
-      imagen: "../../public/vinotinto.png",
+      imagen: "./vinotinto.png",
     },
     {
       id: 5,
@@ -50,7 +50,7 @@ export const productos = defineStore("productos", () => {
       volumen_ml: 150,
       precio_venta: 3.5,
       cantidad_alcohol: 12,
-      imagen: "../../public/vinoblanco.png",
+      imagen: "/vinoblanco.png",
     },
     {
       id: 6,
@@ -60,7 +60,7 @@ export const productos = defineStore("productos", () => {
       volumen_ml: 330,
       precio_venta: 2.0,
       cantidad_alcohol: 0,
-      imagen: "../../public/fantanaranja.png",
+      imagen: "/fantanaranja.png",
     },
     {
       id: 7,
@@ -70,7 +70,7 @@ export const productos = defineStore("productos", () => {
       volumen_ml: 250,
       precio_venta: 3.0,
       cantidad_alcohol: 0,
-      imagen: "../../public/redbull.png",
+      imagen: "/redbull.png",
     },
     {
       id: 8,
@@ -80,7 +80,7 @@ export const productos = defineStore("productos", () => {
       volumen_ml: 250,
       precio_venta: 3.0,
       cantidad_alcohol: 0,
-      imagen: "../../public/zumonaranja.png",
+      imagen: "/zumonaranja.png",
     },
     {
       id: 9,
@@ -90,7 +90,7 @@ export const productos = defineStore("productos", () => {
       volumen_ml: 300,
       precio_venta: 8.0,
       cantidad_alcohol: 10,
-      imagen: "../../public/bombayshaphire.png",
+      imagen: "/bombayshaphire.png",
     },
     {
       id: 10,
@@ -100,7 +100,7 @@ export const productos = defineStore("productos", () => {
       volumen_ml: 50,
       precio_venta: 7.0,
       cantidad_alcohol: 40,
-      imagen: "../../public/jackdaniels.png",
+      imagen: "/jackdaniels.png",
     },
   ];
 

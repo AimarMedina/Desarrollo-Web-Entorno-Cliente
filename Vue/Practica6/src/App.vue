@@ -1,16 +1,34 @@
 <script setup>
-  import { RouterLink,RouterView } from 'vue-router';
+  import { ref, watch } from 'vue';
+  import { RouterLink, RouterView } from 'vue-router';
+  import { AuthStore } from '@/stores/auth'
+
+  const auth = AuthStore()
+
 </script>
 
 <template>
-  <div>
+  <header>
     <nav>
       <router-link to="/">Inicio</router-link>
+      <div class="soloLogueados" v-if="auth.usuario">
+        <router-link to="/misPedidos">Mis pedidos</router-link>
+      </div>
     </nav>
-    <router-view></router-view>
-  </div>
+    <div  >
+      <router-link to="/login" v-if="!auth.usuario">Iniciar Sesión</router-link>
+      <div v-if="auth.usuario" class="otrasCosas">
+        <span>¡Bienvenido, {{ auth.usuario.nombre }}!</span>
+        <router-link to="/" @click="auth.logout">Cerrar Sesión</router-link>
+      </div>
+    </div>
+  </header>
 
-    <footer>
+  <main>
+    <router-view :nombreUsuario="auth.usuario?.nombre"></router-view>
+  </main>
+
+  <footer>
     <hr>
     <p>&copy; 2025 Sistema de Pedidos - Todos los derechos reservados</p>
   </footer>

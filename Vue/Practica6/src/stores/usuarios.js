@@ -1,49 +1,49 @@
 import { defineStore } from "pinia";
 
-export const usuarios = defineStore("usuarios", () => {
-  
-    const usuarios = [
+export const users = defineStore("users", () => {
+
+  const users = [
     {
-      id: 1,
+      id: 1001,
       nombre: "Juan",
       apellido: "Pérez",
-      dni: "12345678A",
       email: "juan.perez@email.com",
-      contraseña: "juan1234",
+      passwd: "Juan@1234", // mayúscula, minúscula, número y símbolo
     },
     {
-      id: 2,
+      id: 1002,
       nombre: "María",
       apellido: "Gómez",
-      dni: "23456789B",
       email: "maria.gomez@email.com",
-      contraseña: "maria1234",
+      passwd: "Maria#5678",
     },
     {
-      id: 3,
+      id: 1003,
       nombre: "Carlos",
       apellido: "López",
-      dni: "34567890C",
       email: "carlos.lopez@email.com",
-      contraseña: "carlos1234",
+      passwd: "Carlos$9012",
     },
     {
-      id: 4,
+      id: 1004,
       nombre: "Laura",
       apellido: "Martínez",
-      dni: "45678901D",
       email: "laura.martinez@email.com",
-      contraseña: "laura1234",
+      passwd: "Laura!3456",
     },
     {
-      id: 5,
+      id: 1005,
       nombre: "David",
       apellido: "Sánchez",
-      dni: "56789012E",
       email: "david.sanchez@email.com",
-      contraseña: "david1234",
+      passwd: "David%7890",
     },
-  ]
+  ];
 
-  return {usuarios}
+  function validarPassword(passwd){
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Z a-z\d]).{8,}$/;
+    return regex.test(passwd)
+  }
+
+  return { users, validarPassword };
 });
