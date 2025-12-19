@@ -1,12 +1,12 @@
 <script setup>
-  import { users } from "@/stores/usuarios";
-  import { AuthStore } from '@/stores/auth'
+  import { useUsersStore } from "@/stores/usuarios";
+  import { useAuthStore } from '@/stores/auth'
 
   import { ref } from "vue";
   import { useRouter } from "vue-router";
-  const usuarios = users();
+  const usuarios = useUsersStore();
   const router = useRouter()
-  const auth = AuthStore()
+  const auth = useAuthStore()
 
   let errorPasswd = ref(false);
   let errorUsuario = ref(false);

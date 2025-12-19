@@ -4,7 +4,8 @@
 
 <template>
     <section>
-        Mis Pedidos
+        <h2>Mis Pedidos</h2>
+        <br>
         <pedidos></pedidos>
     </section>
 </template>

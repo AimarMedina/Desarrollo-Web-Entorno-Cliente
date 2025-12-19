@@ -11,7 +11,11 @@
         <img :src=" producto.imagen " alt="">
         <p>Precio: <span>{{ producto.precio_venta }} €</span></p>
         <span class="pill">{{ producto.categoria }}</span>
+        <slot name="pedir">
+
+        </slot>
     </div>
+
 </template>
 
 <style>

@@ -1,9 +1,9 @@
 <script setup>
   import { ref, watch } from 'vue';
   import { RouterLink, RouterView } from 'vue-router';
-  import { AuthStore } from '@/stores/auth'
+  import { useAuthStore } from '@/stores/auth'
 
-  const auth = AuthStore()
+  const auth = useAuthStore()
 
 </script>
 

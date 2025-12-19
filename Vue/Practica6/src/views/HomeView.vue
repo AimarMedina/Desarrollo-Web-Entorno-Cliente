@@ -14,7 +14,7 @@ import productos from '@/components/productos.vue';
   <!-- Productos disponibles -->
   <section>
     <h2>Productos Disponibles</h2>
-
+    <br>
     <productos></productos>
   </section>
 
